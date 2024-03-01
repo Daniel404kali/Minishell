@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:32:55 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/01 17:12:24 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/01 17:28:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_single_quotes(t_data *data, int i)
 	}
 	else if (data->str[i] == 's' && data->str[i + 1] != 's' && data->str[i + 2] == 's')
 	{
+		if (data->str[i + 1] == 'd')
+			return (-1);
 		printf("Aqui hay sxs\n");
 		i += 3;
 		data->s_quote -= 2;
@@ -82,10 +84,9 @@ int	ft_take_valid_comm(t_data *data)
 	{
 		i = ft_single_quotes(data, i);
 		if (i == -1)
-		{
 			return (-1);
-		}
-	}	
+	}
+	// while (data->d_quote)
 	return (0);
 }
 
