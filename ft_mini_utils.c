@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:23:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/02/27 18:04:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:20:37 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	ft_set_values(t_mini *mini, char **argv, char **envp, int argc)
 	mini->envp = envp;
 	mini->argc = argc;
 	mini->count = 0;
-	
+
+	/* t_quote */
+
+	mini->quote = malloc(sizeof(t_quote));
+
 	/* t_here */
 
 	mini->here = malloc(sizeof(t_here));

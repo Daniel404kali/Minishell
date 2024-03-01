@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:31:12 by descamil          #+#    #+#             */
-/*   Updated: 2024/02/27 18:29:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:19:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,19 @@ typedef struct s_here
 	char	*limiter;
 }			t_here;
 
+typedef struct s_quote
+{
+	int		d_quote;
+	int		s_quote;	
+}		t_quote;
+
 	/* MINI */
 
 typedef struct s_mini
 {
 	t_here	*here;
 	t_names	*names;
+	t_quote	*quote;
 
 	int		argc;
 	int		count;
