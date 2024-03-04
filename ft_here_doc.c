@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 16:40:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/02/29 15:25:00 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:15:52 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,27 @@ void	ft_child2(t_mini *mini)
 	}
 }
 
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] == '\0' || s2[i] == '\0' || s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_here_doc(t_mini *mini)
 {
 	char	*line;
 	int		fd_tmp;
-
+	int		value;
+	
+	value = ft_strlen_b(mini->here->limiter);
 	mini->names->value = 'H';
 	ft_setvalues(mini, mini->argv, mini->envp, mini->argc);
 	fd_tmp = open(".here_doc", O_WRONLY | O_CREAT, 0644);
@@ -71,7 +87,7 @@ void	ft_here_doc(t_mini *mini)
 	while (1)
 	{
 		line = get_next_line(0);
-		if (ft_strnstr(line, mini->here->limiter, ft_strlen_b(mini->here->limiter)) == 1)
+		if ((ft_strlen_b(line) - 1) == value && ft_strncmp(line, mini->names->limiter, value) == 0)
 			break ;
 		if (write(fd_tmp, line, ft_strlen_b(line)) == -1)
 			ft_error_bonus("Error write", 1);

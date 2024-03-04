@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 09:34:01 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/03 11:30:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:29:01 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,25 @@ char	*ft_divjoin(char *str, char *any, int i)
 	char 	*tmp;
 	char	*final;
 	int		length;
-	int		k;
 	int		j;
+	int		k;
+	int		l;
 
 	k = i;
+	l = i;
 	j = 0;
 	length = 0;
+	while (str[l] != '\"')
+		l++;
+	k = l;
 	while (str[k++] != '\0')
 		length++;
-	k = i;
 	tmp = malloc(length + 1);
 	if (tmp == NULL)
 		return (NULL);
-	while (str[k] != '\0')
-		tmp[j++] = str[k++];
+	while (str[l] != '\0')
+		tmp[j++] = str[l++];
+	tmp[j] = '\0';
 	str = ft_set_zero(str, i);
 	final = ft_strjoin(str, any);
 	final = ft_strjoin(final, tmp);
@@ -89,7 +94,7 @@ int main(int argc, char **argv)
 {
 	char	*any = "123456789";
 	char	*str;
-	int		i = 5;
+	int		i = 2;
 	
 	str = malloc(ft_strlen(argv[1]) + 1);
 	strlcpy(str, argv[1], ft_strlen(argv[1]) + 1);

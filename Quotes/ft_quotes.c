@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 09:29:19 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/03 16:21:31 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:12:21 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int	ft_valid_quotes(t_data *data, int i)
 		if (i == -1)
 			return (-1);
 	}
-	else if (data->str[i] == '$')
-	{
-		data->command_len = ft_translate(data, i);
-		i += data->len_var - 1;
-	}	
+	// else if (data->str[i] == '$')
+	// {
+	// 	data->command_len = ft_translate(data, i);
+	// 	i += data->len_var - 1;
+	// }	
 	else
 	{
 		data->command_len++;

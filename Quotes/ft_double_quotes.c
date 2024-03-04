@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:19:30 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/03 16:20:54 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:14:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,9 @@ int	ft_translate(t_data *data, int i)
 	tmp[j++] = '=';
 	tmp[j] = '\0';
 	any = ft_find(data, tmp);
+	free(tmp);
 	printf(RED"ANY = %s\n"RESET, any);
 	data->str = ft_divjoin(data, any, i);
-	free(tmp);
 	return (ft_strlen(any));
 }
 
