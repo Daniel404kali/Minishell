@@ -1,6 +1,7 @@
 SOURCE_FILES =	ft_quotes.c \
 				ft_take_comm.c \
 				ft_utils_quotes.c \
+				ft_double_quotes.c \
 				# ft_remove_quotes.c \
 
 CC = gcc

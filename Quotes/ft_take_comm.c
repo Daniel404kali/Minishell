@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:32:55 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/02 19:49:00 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:58:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,37 @@ int	main(int argc, char **argv, char **envp)
 	
 	if (argc == 1)
 	{
-		// printf(YELLOW"ARGC == 1"RESET BLUE" -->	"RESET RED"[ERROR]\n"RESET);
+		printf(PURPLE"FEW ARGS"RESET BLUE"	->"RESET RED"	[ERROR]\n"RESET);
 		return (0);
 	}
+	ft_values(&data, argv, envp);
 	
 
-
-	ft_values(&data, envp);
-	
-	data.str = argv[1];
-
-	// printf(YELLOW"	[%s]\n"RESET, data.str);
-	
 	i = 0;
-	
 	while (i != -1 && data.str[i] != '\0')
-	{
-		// printf(RED"--I-->%d\n"RESET, i);
 		i = ft_valid_quotes(&data, i);
+	if (i == -1)
+	{
+		printf(RED"		[ERROR]\n"RESET);
+		free(data.str);
+		return (0);
 	}
-	// if (i == -1)
-	// {
-	// 	printf(RED"		[ERROR]\n"RESET);
-	// 	return (0);
-	// }
-	// else
-	// {
-	// 	printf(PURPLE"	%d\n"RESET, data.command_len);
-	// 	printf(CYAN"%s\n"RESET, data.str);
-	// 	printf(GREEN"		[VALID]\n"RESET);
-	// }
-	// r = ft_remove_quotes(&data);
+	else
+	{
+		printf(PURPLE"	%d\n"RESET, data.command_len);
+		printf(CYAN"%s\n"RESET, data.str);
+		printf(GREEN"		[VALID]\n"RESET);
+	}
+	// // r = ft_remove_quotes(&data);
 	// printf(YELLOW"	[%s]\n"RESET, data.rm_str);
 	// if (r == 0)
 	// 	printf(RED"		[ERROR]\n"RESET);
 	// else
 	// 	printf(GREEN"		[VALID]\n"RESET);
+	// while (envp[i])
+	// 	printf("%s\n", envp[i++]);
 	atexit(leaks);
+	printf("%s\n", data.str);
+	free(data.str);
 	return (0);
 }

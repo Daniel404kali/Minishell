@@ -3,19 +3,21 @@
 # Compilar el código C
 gcc ft_take_comm.c ft_quotes.c ft_utils_quotes.c -o a.out
 
-# Combinaciones válidas
-valid_combinations=("xx" "xddx" "sxxsdd" "xxssddxx" "sxsdxdxx" "ssxdxdss" "dxxxxdsxxxxsdd" "dxdxsxsxdxdxsxsdxdxsxs")
+valid_combinations=(   "\"\"\"ls\"\"\$asd\""
+                    "\"\"\"echo 'Hello'\"\"\$variable\""
+                    "\"\"\"command1\"\" \$variable \"\"command2\"\""
+                    "\"\"\"command1\"\"\$variable\"\"command2\"\""
+                    "\"\"\"command with spaces\"\"\$variable\"")
 
-# Combinaciones inválidas
-invalid_combinations=("ss" "dd" "xdx" "xsx" "sxx" "dxx" "sdds" "dssd" "sssxxds" "xxdds s" "xddssxsdxdxs" "ddssddss")
 
-echo "Probando combinaciones válidas:"
+# echo "Probando combinaciones válidas:"
+echo "${valid_combinations}"
 for combo in "${valid_combinations[@]}"; do
     resultado=$(./a.out "$combo")
     echo "Resultado: $resultado"
 done
 
-echo "Probando combinaciones inválidas:"
+# echo "Probando combinaciones inválidas:"
 for combo in "${invalid_combinations[@]}"; do
     resultado=$(./a.out "$combo")
     echo "Resultado: $resultado"

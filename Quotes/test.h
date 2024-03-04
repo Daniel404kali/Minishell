@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:28:36 by descamil          #+#    #+#             */
-/*   Updated: 2024/03/02 18:53:17 by descamil         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:19:51 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 
 typedef struct s_data
 {
+	int		value;
+	int		len_var;
 	int		d_quote;
 	int		s_quote;
 	int		command_len;
@@ -53,16 +55,20 @@ typedef struct s_data
 
 int		ft_strlen(const char *s);
 int		ft_strchr(const char *s, int c);
+int		ft_translate(t_data *data, int i);
 
 int		ft_count_quotes(t_data *data);
 int		ft_valid_quotes(t_data *data, int i);
-int		ft_single_quotes(t_data *data, int i, int q);
-int		ft_double_quotes(t_data *data, int i, int q);
+int		ft_single_quotes(t_data *data, int i, int q, int valid);
+int		ft_double_quotes(t_data *data, int i, int q, int valid);
 int		ft_strnstr(const char *s1, const char *s2, size_t len);
 
 int		ft_remove_quotes(t_data *data);
 
-void	ft_values(t_data *data, char **envp);
+char	*ft_set_zero(char *ptr, int point);
+char	*ft_strjoin(char const *s1, char const *s2);
+
+void	ft_values(t_data *data, char **argv, char **envp);
 
 
 #endif
